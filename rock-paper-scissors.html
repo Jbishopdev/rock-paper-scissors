@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Rock Paper Scissors</h1>
+    <button onclick="playerMove = 'Rock', calculateWinner(computerMove, playerMove)">Rock</button>
+    <button onclick="playerMove = 'Paper', calculateWinner(computerMove, playerMove)">Paper</button>
+    <button onclick="playerMove = 'Scissors', calculateWinner(computerMove, playerMove)">Scissors</button>
+    <button onclick="computerMove = Math.random()">Reset</button>
+  </body>
+  <script>
+    let computerMove = Math.random();
+    let playerMove = "";
+    let tie = () => {
+      console.log('You tied!');
+    }
+    let lose = () => {
+      console.log('You lost!');
+    }
+    let win = () => {
+      console.log('You won!');
+    }
+
+    function calculateWinner(computerMove, playerMove){
+      if (computerMove >= 0 && computerMove < 1/3) {
+        if (playerMove === 'Rock') {
+          tie();
+        } else if (playerMove === 'Paper') {
+          win();
+        } else {
+          lose();
+        }
+      } else if (computerMove >= 1/3 && computerMove < 2/3) {
+        if (playerMove === 'Paper') {
+          tie();
+        } else if (playerMove === 'Scissors') {
+          win();
+        } else {
+          lose();
+        }
+      } else {
+        if (playerMove === 'Scissors') {
+          tie();
+        } else if (playerMove === 'Rock') {
+          win();
+        } else {
+          lose();
+        }
+      }
+    }
+
+  </script>
+</html>
