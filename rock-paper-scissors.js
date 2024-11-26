@@ -1,10 +1,13 @@
+let humanScore = 0;
+let computerScore = 0;
+
 function getComputerChoice () {
   let number = Math.random();
   if (number < 1/3) {
-    return 'Rock'
+    return 'rock'
   } else if (number >= 1/3 && number < 2/3) {
-    return 'Paper'
-  } else return 'Scissors'
+    return 'paper'
+  } else return 'scissors'
 }
 
 function getHumanChoice () {
@@ -15,7 +18,47 @@ function getHumanChoice () {
 
     choice = prompt("Please enter rock, paper, or scissors.").toLowerCase();
   }
-
+  return choice;
 }
 
-getHumanChoice();
+function playRound (humanChoice, computerChoice) {
+
+  if (humanChoice === computerChoice) {
+    console.log(`It's a tie! You both chose ${humanChoice}`);
+  }
+
+  else if (humanChoice === 'rock'){
+    if (computerChoice === 'paper'){
+      console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      computerScore++;
+    } else {
+      console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      humanScore++;
+    }
+  } 
+
+  else if (humanChoice === 'paper'){
+    if (computerChoice === 'scissors'){
+      console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      computerScore++;
+    } else {
+      console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      humanScore++;
+    }
+  }
+
+  else if (humanChoice === 'scissors'){
+    if (computerChoice === 'rock'){
+      console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      computerScore++;
+    } else {
+      console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      humanScore++;
+    }
+  }
+}
+
+let humanSelect = getHumanChoice();
+let computerSelect = getComputerChoice();
+
+playRound(humanSelect, computerSelect);
