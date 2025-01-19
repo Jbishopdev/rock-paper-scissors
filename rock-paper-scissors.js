@@ -1,5 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
+const p = document.querySelector("p");
 
 function getComputerChoice () {
   let number = Math.random();
@@ -24,36 +25,43 @@ function getHumanChoice () {
 function playRound (humanChoice, computerChoice) {
 
   if (humanChoice === computerChoice) {
-    console.log(`It's a tie! You both chose ${humanChoice}`);
+    // console.log(`It's a tie! You both chose ${humanChoice}`);
+    p.textContent = `It's a tie! You both chose ${humanChoice}`;
     return;
   }
 
   else if (humanChoice === 'rock'){
     if (computerChoice === 'paper'){
-      console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      // console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      p.textContent = `You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`;
       computerScore++;
     } else {
-      console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      // console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      p.textContent = `You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`;
       humanScore++;
     }
   } 
 
   else if (humanChoice === 'paper'){
     if (computerChoice === 'scissors'){
-      console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      // console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      p.textContent = `You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`;
       computerScore++;
     } else {
-      console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      // console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      p.textContent = `You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`;
       humanScore++;
     }
   }
 
   else if (humanChoice === 'scissors'){
     if (computerChoice === 'rock'){
-      console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      // console.log(`You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      p.textContent = `You lose! You chose ${humanChoice} and the computer chose ${computerChoice}!`;
       computerScore++;
     } else {
-      console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      // console.log(`You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`);
+      p.textContent = `You win! You chose ${humanChoice} and the computer chose ${computerChoice}!`;
       humanScore++;
     }
   }
