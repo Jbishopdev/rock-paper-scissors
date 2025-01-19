@@ -3,6 +3,12 @@ let computerScore = 0;
 const p = document.querySelector("p");
 const pScore = document.querySelector("#score");
 const pFinal = document.querySelector("#final");
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+const reset = document.querySelector("#reset");
+reset.disabled = true;
+
 
 function getComputerChoice () {
   let number = Math.random();
@@ -24,8 +30,21 @@ function getHumanChoice () {
   return choice;
 }
 
+function resetGame () {
+  humanScore = 0;
+  computerScore = 0;
+  pScore.textContent = "";
+  pFinal.textContent = "";
+  p.textContent = "";
+  reset.disabled = true;
+  rock.disabled = false;
+  paper.disabled = false;
+  scissors.disabled = false;
+}
+
 function playRound (humanChoice, computerChoice) {
   pFinal.textContent = "";
+  reset.disabled = true;
   if (humanChoice === computerChoice) {
     // console.log(`It's a tie! You both chose ${humanChoice}`);
     p.textContent = `It's a tie! You both chose ${humanChoice}`;
@@ -69,8 +88,10 @@ function playRound (humanChoice, computerChoice) {
   }
   pScore.textContent = `Player Score : ${humanScore} Computer Score : ${computerScore}`;
   if (humanScore > 4 || computerScore > 4) {
-    humanScore = 0;
-    computerScore = 0;
+    rock.disabled = true;
+    paper.disabled = true;
+    scissors.disabled = true;
+    reset.disabled = false;
     if (humanScore > 4) {
       pFinal.textContent = "Player reached 5 first! Winner!";
     }
@@ -78,12 +99,8 @@ function playRound (humanChoice, computerChoice) {
       pFinal.textContent = "Computer reached 5 first! Winner!";
     }
   }
-
 }
 
-const rock = document.querySelector("#rock");
-const paper = document.querySelector("#paper");
-const scissors = document.querySelector("#scissors");
 
 
 rock.addEventListener("click", () => playRound("rock", getComputerChoice())
@@ -92,6 +109,7 @@ paper.addEventListener("click", () => playRound("paper", getComputerChoice())
 );
 scissors.addEventListener("click", () => playRound("scissors", getComputerChoice())
 );
+reset.addEventListener("click", resetGame);
 
 // function playGame() {
 //   for (let i = 0; i < 5; i++) {
