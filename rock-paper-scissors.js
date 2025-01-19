@@ -19,16 +19,16 @@ function getComputerChoice () {
   } else return 'scissors'
 }
 
-function getHumanChoice () {
+// function getHumanChoice () {
 
-  let choice = "";
+//   let choice = "";
 
-  while (choice !== "rock" && choice !== "paper" && choice !== "scissors") {
+//   while (choice !== "rock" && choice !== "paper" && choice !== "scissors") {
 
-    choice = prompt("Please enter rock, paper, or scissors.").toLowerCase();
-  }
-  return choice;
-}
+//     choice = prompt("Please enter rock, paper, or scissors.").toLowerCase();
+//   }
+//   return choice;
+// }
 
 function resetGame () {
   humanScore = 0;
@@ -86,7 +86,7 @@ function playRound (humanChoice, computerChoice) {
       humanScore++;
     }
   }
-  pScore.textContent = `Player Score : ${humanScore} Computer Score : ${computerScore}`;
+  pScore.textContent = `| Player: ${humanScore} | Computer: ${computerScore} |`;
   if (humanScore > 4 || computerScore > 4) {
     rock.disabled = true;
     paper.disabled = true;
