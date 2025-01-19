@@ -1,6 +1,8 @@
 let humanScore = 0;
 let computerScore = 0;
 const p = document.querySelector("p");
+const pScore = document.querySelector("#score");
+const pFinal = document.querySelector("#final");
 
 function getComputerChoice () {
   let number = Math.random();
@@ -23,7 +25,7 @@ function getHumanChoice () {
 }
 
 function playRound (humanChoice, computerChoice) {
-
+  pFinal.textContent = "";
   if (humanChoice === computerChoice) {
     // console.log(`It's a tie! You both chose ${humanChoice}`);
     p.textContent = `It's a tie! You both chose ${humanChoice}`;
@@ -65,11 +67,24 @@ function playRound (humanChoice, computerChoice) {
       humanScore++;
     }
   }
+  pScore.textContent = `Player Score : ${humanScore} Computer Score : ${computerScore}`;
+  if (humanScore > 4 || computerScore > 4) {
+    humanScore = 0;
+    computerScore = 0;
+    if (humanScore > 4) {
+      pFinal.textContent = "Player reached 5 first! Winner!";
+    }
+    else {
+      pFinal.textContent = "Computer reached 5 first! Winner!";
+    }
+  }
+
 }
 
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+
 
 rock.addEventListener("click", () => playRound("rock", getComputerChoice())
 );
